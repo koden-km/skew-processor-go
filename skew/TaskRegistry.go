@@ -1,4 +1,4 @@
-package skew
+package skewd
 
 import (
 	"errors"
@@ -6,6 +6,12 @@ import (
 
 type TaskRegistry struct {
 	tasks map[string]*TaskInterface
+}
+
+func NewTaskRegistry() *TaskRegistry {
+	return &TaskRegistry{
+		tasks: make([string]*TaskInterface)
+	}
 }
 
 func (tr *TaskRegistry) Add(task TaskInterface) error {
@@ -22,12 +28,9 @@ func (tr *TaskRegistry) Get(name string) *TaskInterface {
 }
 
 func (tr *TaskRegistry) Capabilities() []string {
-
-	// TO DO
-
-	// var capabilities []string = make([]string, len(tr.tasks))
-	// for n, _ := range tr.tasks {
-	// 	capabilities.Append(n)
-	// }
-	// return capabilities
+	var capabilities []string = make([]string, len(tr.tasks))
+	for n, _ := range tr.tasks {
+		capabilities.Append(n)
+	}
+	return capabilities
 }

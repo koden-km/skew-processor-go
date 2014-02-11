@@ -1,4 +1,4 @@
-package skew
+package skewd
 
 type Processor struct {
 }
